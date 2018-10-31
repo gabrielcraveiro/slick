@@ -288,26 +288,26 @@
                 }).animate({
                     animStart: targetLeft
                 }, {
-                    duration: _.options.speed,
-                    easing: _.options.easing,
-                    step: function (now) {
-                        now = Math.ceil(now);
-                        if (_.options.vertical === false) {
-                            animProps[_.animType] = 'translate(' +
-                                now + 'px, 0px)';
-                            _.$slideTrack.css(animProps);
-                        } else {
-                            animProps[_.animType] = 'translate(0px,' +
-                                now + 'px)';
-                            _.$slideTrack.css(animProps);
+                        duration: _.options.speed,
+                        easing: _.options.easing,
+                        step: function (now) {
+                            now = Math.ceil(now);
+                            if (_.options.vertical === false) {
+                                animProps[_.animType] = 'translate(' +
+                                    now + 'px, 0px)';
+                                _.$slideTrack.css(animProps);
+                            } else {
+                                animProps[_.animType] = 'translate(0px,' +
+                                    now + 'px)';
+                                _.$slideTrack.css(animProps);
+                            }
+                        },
+                        complete: function () {
+                            if (callback) {
+                                callback.call();
+                            }
                         }
-                    },
-                    complete: function () {
-                        if (callback) {
-                            callback.call();
-                        }
-                    }
-                });
+                    });
 
             } else {
 
@@ -508,8 +508,8 @@
 
         _.$slides =
             _.$slider
-            .children(_.options.slide + ':not(.slick-cloned)')
-            .addClass('slick-slide');
+                .children(_.options.slide + ':not(.slick-cloned)')
+                .addClass('slick-slide');
 
         _.slideCount = _.$slides.length;
 
@@ -638,7 +638,7 @@
                         } else {
                             _.options = $.extend({}, _.originalSettings,
                                 _.breakpointSettings[
-                                    targetBreakpoint]);
+                                targetBreakpoint]);
                             if (initial === true) {
                                 _.currentSlide = _.options.initialSlide;
                             }
@@ -653,7 +653,7 @@
                     } else {
                         _.options = $.extend({}, _.originalSettings,
                             _.breakpointSettings[
-                                targetBreakpoint]);
+                            targetBreakpoint]);
                         if (initial === true) {
                             _.currentSlide = _.options.initialSlide;
                         }
@@ -1500,9 +1500,9 @@
         //Dont slide if the cursor is inside the form fields and arrow keys are pressed
         if (!event.target.tagName.match('TEXTAREA|INPUT|SELECT')) {
             if (event.keyCode === 37 && _.options.accessibility === true) {
-          
+
             } else if (event.keyCode === 39 && _.options.accessibility === true) {
-              
+
             }
         }
 
@@ -1610,13 +1610,13 @@
             cloneRange = _.$slider.find('.slick-slide');
             loadImages(cloneRange);
         } else
-        if (_.currentSlide >= _.slideCount - _.options.slidesToShow) {
-            cloneRange = _.$slider.find('.slick-cloned').slice(0, _.options.slidesToShow);
-            loadImages(cloneRange);
-        } else if (_.currentSlide === 0) {
-            cloneRange = _.$slider.find('.slick-cloned').slice(_.options.slidesToShow * -1);
-            loadImages(cloneRange);
-        }
+            if (_.currentSlide >= _.slideCount - _.options.slidesToShow) {
+                cloneRange = _.$slider.find('.slick-cloned').slice(0, _.options.slidesToShow);
+                loadImages(cloneRange);
+            } else if (_.currentSlide === 0) {
+                cloneRange = _.$slider.find('.slick-cloned').slice(_.options.slidesToShow * -1);
+                loadImages(cloneRange);
+            }
 
     };
 
@@ -1906,8 +1906,8 @@
 
         _.$slides =
             _.$slideTrack
-            .children(_.options.slide)
-            .addClass('slick-slide');
+                .children(_.options.slide)
+                .addClass('slick-slide');
 
         _.slideCount = _.$slides.length;
 
@@ -2336,7 +2336,7 @@
                 if (index === 0) {
 
                     allSlides
-                        .eq(allSlides.length - 1 - _.options.slidesToShow)
+                        .eq(_.options.slidesToShow + _.slideCount + 1)
                         .addClass('slick-center');
 
                 } else if (index === _.slideCount - 1) {
@@ -2420,7 +2420,7 @@
                 }
 
                 for (i = _.slideCount; i > (_.slideCount -
-                        infiniteCount); i -= 1) {
+                    infiniteCount); i -= 1) {
                     slideIndex = i - 1;
                     $(_.$slides[slideIndex]).clone(true).attr('id', '')
                         .attr('data-slick-index', slideIndex - _.slideCount)
@@ -2459,8 +2459,8 @@
 
         var targetElement =
             $(event.target).is('.slick-slide') ?
-            $(event.target) :
-            $(event.target).parents('.slick-slide');
+                $(event.target) :
+                $(event.target).parents('.slick-slide');
 
         var index = parseInt(targetElement.attr('data-slick-index'));
 
@@ -2689,8 +2689,8 @@
 
                     slideCount =
                         _.options.swipeToSlide ?
-                        _.checkNavigable(_.currentSlide + _.getSlideCount()) :
-                        _.currentSlide + _.getSlideCount();
+                            _.checkNavigable(_.currentSlide + _.getSlideCount()) :
+                            _.currentSlide + _.getSlideCount();
 
                     _.currentDirection = 0;
 
@@ -2701,8 +2701,8 @@
 
                     slideCount =
                         _.options.swipeToSlide ?
-                        _.checkNavigable(_.currentSlide - _.getSlideCount()) :
-                        _.currentSlide - _.getSlideCount();
+                            _.checkNavigable(_.currentSlide - _.getSlideCount()) :
+                            _.currentSlide - _.getSlideCount();
 
                     _.currentDirection = 1;
 
